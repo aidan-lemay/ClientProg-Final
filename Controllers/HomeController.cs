@@ -14,10 +14,12 @@ namespace Project3_FinalExam.Controllers
     public class HomeController : Controller
     {
         private readonly IGetFaculty _facultyRepository;
+        private readonly IGetStaff _staffRepository;
 
-        public HomeController(IGetFaculty facultyRepository)
+        public HomeController(IGetFaculty facultyRepository, IGetStaff staffRepository)
         {
             _facultyRepository = facultyRepository;
+            _staffRepository = staffRepository;
         }
 
         public IActionResult Index()
@@ -32,6 +34,18 @@ namespace Project3_FinalExam.Controllers
             var homeViewModel = new HomeViewModel()
             {
                 Faculty = allFaculty.ToList(),
+                Title = "This is your Faculty"
+            };
+            return View(homeViewModel);
+        }
+
+        public async Task<IActionResult> GetStaff()
+        {
+            var allStaff = await _staffRepository.GetAllStaff();
+            var sortedStaff = allStaff.OrderBy(s => s.username);
+            var homeViewModel = new HomeViewModel()
+            {
+                Staff = allStaff.ToList(),
                 Title = "This is your Faculty"
             };
             return View(homeViewModel);

@@ -25,6 +25,8 @@ namespace Project3_FinalExam
         {
             services.AddTransient<IGetFaculty, GetFaculty>();
 
+            services.AddTransient<IGetStaff, GetStaff>();
+
             services.AddControllersWithViews();
         }
 
