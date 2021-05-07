@@ -5,7 +5,7 @@
 <div id="myUnderDegrees"></div>
 @foreach (var under in Model.UnderGrads)
 {
-    <h3 id=@String.Concat("myHdng", under.degreeName)><b>@under.degreeName</b></h3>
+    <h3 id=@String.Concat("myHdng", under.degreeName)><b>@under.title</b></h3>
 
     <div id=@String.Concat("myDiv", under.degreeName)>
         <p>@under.title</p>
@@ -22,7 +22,7 @@
 
 @*Get jQuery and jQueryUI scripts from wwwroot/lib*@
 <script src="~/lib/jquery/dist/jquery.js"></script>
-<link rel="stylesheet" href="~/lib/jqueryui/themes/hot-sneaks/jquery-ui.css">
+<link rel="stylesheet" href="~/lib/jqueryui/themes/humanity/jquery-ui.css">
 <script src="~/lib/jqueryui/jquery-ui.js"></script>
 <script>
     // Create accordion

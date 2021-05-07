@@ -22,9 +22,16 @@ namespace Project3_FinalExam.Controllers
             _staffRepository = staffRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var getAbout = new GetAbout();
+            var about = await getAbout.GetAboutInfo();
+            var homeViewModel = new HomeViewModel()
+            {
+                AboutInfo = about,
+                Title = "Welcome to the iSchool Home Page!"
+            };
+            return View(homeViewModel);
         }
 
         public async Task<IActionResult> GetFaculty()

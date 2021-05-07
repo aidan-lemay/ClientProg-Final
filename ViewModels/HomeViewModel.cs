@@ -8,6 +8,7 @@ namespace Project3_FinalExam.ViewModels
 {
     public class HomeViewModel
     {
+        public AboutInfo AboutInfo { get; set; }
         public List<Faculty> Faculty { get; set; }
         public List<Staff> Staff { get; set; }
         public string Title { get; set; }
