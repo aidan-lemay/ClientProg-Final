@@ -43,12 +43,12 @@ namespace Project3_FinalExam.Controllers
         {
             var allStaff = await _staffRepository.GetAllStaff();
             var sortedStaff = allStaff.OrderBy(s => s.username);
-            var staffViewModel = new StaffViewModel()
+            var homeViewModel = new HomeViewModel()
             {
                 Staff = allStaff.ToList(),
-                Title = "This is your Faculty"
+                Title = "This is your Staff"
             };
-            return View(staffViewModel);
+            return View(homeViewModel);
         }
 
         public async Task<IActionResult> Under()
