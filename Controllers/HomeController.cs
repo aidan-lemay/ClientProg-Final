@@ -63,6 +63,18 @@ namespace Project3_FinalExam.Controllers
             return View(underViewModel);
         }
 
+        public async Task<IActionResult> GetEmploymentTable()
+        {
+            var getEmploy = new GetEmployment();
+            var employTable = await getEmploy.GetEmploymentTable();
+            var employTableViewModel = new EmploymentTableViewModel()
+            {
+                employmentTable = employTable,
+                Title = "Employment Table"
+            };
+            return View(employTableViewModel);
+        }
+
         public IActionResult Privacy()
         {
             return View();
