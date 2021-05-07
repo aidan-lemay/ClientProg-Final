@@ -11,7 +11,7 @@ namespace Project3_FinalExam.Services
 {
     public class GetAbout
     {
-        public async Task<List<AboutInfo>> GetAboutInfo()
+        public async Task<AboutInfo> GetAboutInfo()
         {
             using (var client1 = new HttpClient())
             {
@@ -29,32 +29,21 @@ namespace Project3_FinalExam.Services
                     // Above three lines can be replaced with new helper method below
                     // string responseBody = await client.GetStringAsync(uri);
 
-                    var rtnResults = JsonConvert.DeserializeObject<Dictionary<string, List<AboutInfo>>>(data);
-                    List<AboutInfo> aboutInfoList = new List<AboutInfo>();
+                    var rtnResults = JsonConvert.DeserializeObject<AboutInfo>(data);
 
-                    foreach (KeyValuePair<string, List<AboutInfo>> kvp in rtnResults)
-                    {
-                        foreach (var item in kvp.Value)
-                        {
-                            aboutInfoList.Add(item);
-                        }
-                    }
-
-                    return aboutInfoList;
-
-
+                    return rtnResults;
 
                 }
                 catch (HttpRequestException hre)
                 {
                     var msg = hre.Message;
-                    List<AboutInfo> aboutInfo = new List<AboutInfo>();
+                    AboutInfo aboutInfo = new AboutInfo();
                     return aboutInfo;
                 }
                 catch (Exception ex)
                 {
                     var msg = ex.Message;
-                    List<AboutInfo> aboutInfo = new List<AboutInfo>();
+                    AboutInfo aboutInfo = new AboutInfo();
                     return aboutInfo;
                 }
             }
