@@ -31,10 +31,24 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Under">Undergraduate Degrees</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Grad">Graduate Degrees</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="GetEmploymentTable">Employment Table</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn" onclick="myFunction()">
+                                    Degrees
+                                </button>
+                                <div class="dropdown-content" id="myDropdown">
+                                    <a href="#">Undergraduate</a>
+                                    <a href="#">Graduate</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -52,6 +66,25 @@
             &copy; 2021 - Rochester Institute of Technology - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (e) {
+            if (!e.target.matches('.dropbtn')) {
+                var myDropdown = document.getElementById("myDropdown");
+                if (myDropdown.classList.contains('show')) {
+                    myDropdown.classList.remove('show');
+                }
+            }
+        }
+    </script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

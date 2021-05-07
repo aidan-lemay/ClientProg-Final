@@ -63,6 +63,18 @@ namespace Project3_FinalExam.Controllers
             return View(underViewModel);
         }
 
+        public async Task<IActionResult> Grad()
+        {
+            var getGrad = new GetGraduate();
+            var grad = await getGrad.GetGradDegrees();
+            var gradViewModel = new GradViewModel()
+            {
+                Grads = grad,
+                Title = "Graduate Programs"
+            };
+            return View(gradViewModel);
+        }
+
         public async Task<IActionResult> GetEmploymentTable()
         {
             var getEmploy = new GetEmployment();
