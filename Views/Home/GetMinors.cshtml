@@ -1,22 +1,23 @@
-﻿@model Project3_FinalExam.ViewModels.UndergradViewModel
+﻿@model Project3_FinalExam.ViewModels.MinorsViewModel
 
 <h2>@Model.Title</h2>
 
-<div id="myUnderDegrees"></div>
-@foreach (var under in Model.UnderGrads)
+<div id="myMinors"></div>
+@foreach (var minor in Model.Minors)
 {
-    <h3 id=@String.Concat("myHdng", under.degreeName)><b>@under.title</b></h3>
+    <h3 id=@String.Concat("myHdng", minor.name)><b>@minor.title</b></h3>
 
-    <div id=@String.Concat("myDiv", under.degreeName)>
-        <p>@under.title</p>
-        <p>@under.description</p>
-        <p>Below are the concentrations in this degree program:</p>
+    <div id=@String.Concat("myDiv", minor.name)>
+        <p>@minor.title</p>
+        <p>@minor.description</p>
+        <p>Below are the courses in this minor:</p>
         <ul>
-            @foreach (var conc in under.concentrations)
+            @foreach (var conc in minor.courses)
             {
                 <li>@conc</li>
             }
         </ul>
+        <p><i>@minor.note</i></p>
     </div>
 }
 
@@ -31,11 +32,11 @@
     let divs = document.querySelectorAll("[id^='myDiv']");
 
     for (var i = 0; i < headings.length; i++) {
-        $("#myUnderDegrees").append($("#" + headings[i].id));
-        $("#myUnderDegrees").append($("#" + divs[i].id));
+        $("#myMinors").append($("#" + headings[i].id));
+        $("#myMinors").append($("#" + divs[i].id));
     }
 
-    $("#myUnderDegrees").accordion({
+    $("#myMinors").accordion({
         collapsible: true,
         active: false,
         heightStyle: "content"

@@ -26,9 +26,6 @@ namespace Project3_FinalExam.Services
                     response.EnsureSuccessStatusCode();
                     var data = await response.Content.ReadAsStringAsync();
 
-                    // Above three lines can be replaced with new helper method below
-                    // string responseBody = await client.GetStringAsync(uri);
-
                     var rtnResults = JsonConvert.DeserializeObject<Dictionary<string, List<GradMajors>>>(data);
                     List<GradMajors> gradList = new List<GradMajors>();
                     GradMajors gradMajors = new GradMajors();

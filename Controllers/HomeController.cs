@@ -82,6 +82,19 @@ namespace Project3_FinalExam.Controllers
             return View(gradViewModel);
         }
 
+        public async Task<IActionResult> GetMinors()
+        {
+            var getMinors = new GetMinors();
+            var minors = await getMinors.GetAllMinors();
+            var minorsViewModel = new MinorsViewModel()
+            {
+                Minors = minors,
+                Title = "Minors"
+            };
+            return View(minorsViewModel);
+
+        }
+
         public async Task<IActionResult> GetEmploymentTable()
         {
             var getEmploy = new GetEmployment();

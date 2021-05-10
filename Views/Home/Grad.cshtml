@@ -14,29 +14,30 @@
         <h3 id=@String.Concat("myHdng", grad.degreeName)><b>@grad.title</b></h3>
     }
 
-    <div id=@String.Concat("myDiv", grad.title)>
-        @if (grad.degreeName != "graduate advanced certificates")
-        {
-            <p>@grad.title</p>
-            <p>@grad.description</p>
-            <ul>
-                @foreach (var conc in grad.concentrations)
-                {
-                    <li>@conc</li>
-                }
-            </ul>
-        }
+<div id=@String.Concat("myDiv", grad.title)>
+    @if (grad.degreeName != "graduate advanced certificates")
+    {
+        <p>@grad.title</p>
+        <p>@grad.description</p>
+        <p>Below are the concentrations in this degree program:</p>
         <ul>
-            @if (grad.degreeName == "graduate advanced certificates")
+            @foreach (var conc in grad.concentrations)
             {
-                @foreach (var conc in grad.availableCertificates)
-                {
-                    <li>@conc</li>
-                }
+                <li>@conc</li>
             }
-
         </ul>
-    </div>
+    }
+    <ul>
+        @if (grad.degreeName == "graduate advanced certificates")
+        {
+            @foreach (var conc in grad.availableCertificates)
+            {
+                <li>@conc</li>
+            }
+        }
+
+    </ul>
+</div>
 }
 
 
