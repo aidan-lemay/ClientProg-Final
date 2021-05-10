@@ -7,8 +7,30 @@
 <div class="text-center">
     <h1 class="display-4">@Model.Title</h1>
 </div>
-<div>
-    <img src="~/img/golisano.jpg" />
-    @Model.AboutInfo.title;
-    
+<div style="justify-content: center">
+
+    <div style="height: 20px"></div>
+
+    <img src="~/img/golisano.jpg" class="homeImg" style="
+        width: 75%;
+        justify-content: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+" />
+
+    <div style="height: 20px"></div>
+
+    <h1 style="text-align: center; font-style: italic;">"@Model.AboutInfo.title"</h1>
+
+    <hr />
+
+    <h3 style="text-align: center;">@Model.AboutInfo.description</h3>
+
+
+    <hr />
+
+    <h3 style="text-align: center;  ">"@Model.AboutInfo.quote"</h3>
+    <h4 style="text-align: right; font-style: italic;">- @Model.AboutInfo.quoteAuthor</h4>
+
 </div>
