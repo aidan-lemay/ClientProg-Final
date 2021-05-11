@@ -27,6 +27,16 @@ namespace Project3_FinalExam
 
             services.AddTransient<IGetStaff, GetStaff>();
 
+            services.AddTransient<IGetAbout, GetAbout>();
+
+            services.AddTransient<IGetEmployment, GetEmployment>();
+
+            services.AddTransient<IGetGraduate, GetGraduate>();
+
+            services.AddTransient<IGetMinors, GetMinors>();
+
+            services.AddTransient<IGetUndergrad, GetUndergraduate>();
+
             services.AddControllersWithViews();
         }
 

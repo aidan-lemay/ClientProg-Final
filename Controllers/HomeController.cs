@@ -15,17 +15,26 @@ namespace Project3_FinalExam.Controllers
     {
         private readonly IGetFaculty _facultyRepository;
         private readonly IGetStaff _staffRepository;
+        private readonly IGetAbout _aboutRepository;
+        private readonly IGetEmployment _employmentRepository;
+        private readonly IGetGraduate _graduateRepository;
+        private readonly IGetMinors _minorsRepository;
+        private readonly IGetUndergrad _underRepository;
 
-        public HomeController(IGetFaculty facultyRepository, IGetStaff staffRepository)
+        public HomeController(IGetUndergrad underRepository, IGetMinors minorsRepository, IGetGraduate graduateRepository, IGetFaculty facultyRepository, IGetStaff staffRepository, IGetAbout aboutRepository, IGetEmployment employmentRepository)
         {
             _facultyRepository = facultyRepository;
             _staffRepository = staffRepository;
+            _aboutRepository = aboutRepository;
+            _employmentRepository = employmentRepository;
+            _graduateRepository = graduateRepository;
+            _minorsRepository = minorsRepository;
+            _underRepository = underRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var getAbout = new GetAbout();
-            var about = await getAbout.GetAboutInfo();
+            var about = await _aboutRepository.GetAboutInfo();
             var homeViewModel = new HomeViewModel()
             {
                 AboutInfo = about,
@@ -60,8 +69,7 @@ namespace Project3_FinalExam.Controllers
 
         public async Task<IActionResult> Under()
         {
-            var getUnder = new GetUndergraduate();
-            var under = await getUnder.GetUnderGradDegrees();
+            var under = await _underRepository.GetUnderGradDegrees();
             var underViewModel = new UndergradViewModel()
             {
                 UnderGrads = under,
@@ -72,8 +80,7 @@ namespace Project3_FinalExam.Controllers
 
         public async Task<IActionResult> Grad()
         {
-            var getGrad = new GetGraduate();
-            var grad = await getGrad.GetGradDegrees();
+            var grad = await _graduateRepository.GetGradDegrees();
             var gradViewModel = new GradViewModel()
             {
                 Grads = grad,
@@ -84,8 +91,7 @@ namespace Project3_FinalExam.Controllers
 
         public async Task<IActionResult> GetMinors()
         {
-            var getMinors = new GetMinors();
-            var minors = await getMinors.GetAllMinors();
+            var minors = await _minorsRepository.GetAllMinors();
             var minorsViewModel = new MinorsViewModel()
             {
                 Minors = minors,
@@ -97,8 +103,7 @@ namespace Project3_FinalExam.Controllers
 
         public async Task<IActionResult> GetEmploymentTable()
         {
-            var getEmploy = new GetEmployment();
-            var employTable = await getEmploy.GetEmploymentTable();
+            var employTable = await _employmentRepository.GetEmploymentTable();
             var employTableViewModel = new EmploymentTableViewModel()
             {
                 employmentTable = employTable,

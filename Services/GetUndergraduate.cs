@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Project3_FinalExam.Services
 {
-    public class GetUndergraduate
+    public class GetUndergraduate : IGetUndergrad
     {
         public async Task<List<UnderGradMajors>> GetUnderGradDegrees()
         {

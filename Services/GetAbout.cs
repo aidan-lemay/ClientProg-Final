@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Project3_FinalExam.Services
 {
-    public class GetAbout
+    public class GetAbout : IGetAbout
     {
         public async Task<AboutInfo> GetAboutInfo()
         {
