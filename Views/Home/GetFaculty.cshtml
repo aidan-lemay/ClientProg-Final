@@ -6,7 +6,7 @@
 {
     <div class="row">
         <div class="col-sm-3">
-            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString())>
+            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString()) onclick="getName(id)">
                 <img src="@Model.Faculty[i].imagePath" style="height:160px;width:150px" alt="" />
             </div>
             <div class="caption">
@@ -26,7 +26,7 @@
             }
         }
         <div class="col-sm-3">
-            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString())>
+            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString()) onclick="getName(id)">
                 <img src="@Model.Faculty[i].imagePath" style="height:160px;width:150px" alt="" />
             </div>
             <div class="caption">
@@ -46,7 +46,7 @@
             }
         }
         <div class="col-sm-3">
-            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString())>
+            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString()) onclick="getName(id)">
                 <img src="@Model.Faculty[i].imagePath" style="height:160px;width:150px" alt="" />
             </div>
             <div class="caption">
@@ -66,7 +66,7 @@
             }
         }
         <div class="col-sm-3">
-            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString())>
+            <div class="thumbnail" id=@String.Concat("myDiv:", i.ToString()) onclick="getName(id)">
                 <img src="@Model.Faculty[i].imagePath" style="height:160px;width:150px" alt="" />
             </div>
             <div class="caption">
@@ -79,5 +79,34 @@
         <div>&nbsp;</div>
     </div>
 }
+<div id="dialog"></div>
+<script src="~/jquery/jquery.js"></script>
+<link rel="stylesheet" href="~/jqueryui/themes/humanity/jquery-ui.css" />
+<script src="~/jqueryui/jquery-ui.js"></script>
+<script>
+    var $j = jQuery.noConflict();
+    var facultyData = @Html.Raw(Json.Serialize(Model.Faculty));
 
+    function getName(id) {
+        let facultyElement = (id).split(':')[1];
+
+        var divContent = "<div><ul>";
+
+        divContent += "<li><font color='#18ADEA'><b><u>Title:</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>" + facultyData[facultyElement].title + "</b></<li>"
+        divContent += "<li><font color='#18ADEA'><b><u>Email:</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>" + facultyData[facultyElement].email + "</b></<li>"
+        divContent += "<li><font color='#18ADEA'><b><u>Office:</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>" + facultyData[facultyElement].office + "</b></<li>";
+
+        divContent += "</ul></div>";
+
+        let elmt = document.getElementById(id);
+        $j("#dialog").html(divContent);
+        $j("#dialog").dialog({
+            title: facultyData[facultyElement].name,
+            width: 500,
+            position: { my: "center", at: "bottom+40%", of: elmt }
+        });
+        $j("#dialog").dialog("open");
+    }
+
+</script>
 
